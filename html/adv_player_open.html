@@ -1,0 +1,198 @@
+<!DOCTYPE html "-//W3C//DTD HTML 4.01//EN"
+        "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8"/>
+    <title>ADV Player Web</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <link rel="shortcut icon"  href="favicon.png" type="image/x-png">
+    <link rel="stylesheet" type="text/css" href="../_css/adv_player_open_style.css" />
+    <script type="text/javascript" src="../_javascript/adv_player_open_script.js" ></script>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.5.js"></script>
+    <script type="text/javascript" src="../_javascript/speak.js"></script>
+    <style>
+    .navbar {
+      margin-bottom: 0;
+      border-radius: 0;
+    }
+    .row.content {height: 530px}
+    .sidenav {
+      padding-top: 20px;
+      background-color: #f1f1f1;
+      height: 100%;
+      text-align: center;
+    }
+    footer {
+      background-color: #555;
+      color: white;
+      padding: 15px;
+    }
+    @media screen and (max-width: 767px) {
+      .sidenav {
+        height: auto;
+        padding: 15px;
+      }
+      .row.content {height:auto;} 
+    }
+  </style>
+ 
+</head>
+<script>
+    function mudaFoto(foto) {
+        document.getElementById("icone").src = foto;
+    }
+</script>
+<body>
+<div id="interface">
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>                        
+      </button>
+      <a class="navbar-brand" href="index.html"><img src="favicon.png" height="30px" width="30px"></a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="index.html">Home</a></li>
+        <li class="active"><a href="#">ADV Player</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div id="supportMsg"></div>
+    <br><br>
+<div id="video" class="player-video" onmouseover="prepare(this)">
+
+
+        <video id="myVideo" class="video-view"  poster="../_imagens/cursos-para-deficiente-visual-gratuito-em-são-paulo.jpg"  >
+            <source id="video" src="" type="video/mp4"/>
+        </video>
+
+        <div class="video-preloader"></div>
+
+        <div class="video-controls">
+
+            <div class="video-progress-bar float-left">
+                <div class="video-loader"></div>
+                <div class="video-progress"></div>
+            </div>
+            <div class="video-stop float-left video-btn"></div>
+            <div data-skip="-10" class="video-rewind float-left video-btn"></div>
+            <div class="video-play float-left video-btn"></div>
+            <div data-skip2="25" class="video-fast float-left video-btn"></div>
+            <div class="video-time float-left" id="t">00:00 | 00:00</div>
+            <div class="video-volume float-left video-btn"></div>
+            <div class="slider float-left">
+                <div class="slider-vol"></div>
+            </div>
+
+            <!--<div class="video-help float-left video-btn"></div> -->
+            <div class="video-screen float-right video-btn"></div>
+        </div>
+        <div class="clear"></div>
+        <br>
+          <img src="../_imagens/speedometer.png" style="width: 30px; height: 30px;">
+            <div class="video-velocity float-left video-btn">
+                <div class="slideContainer">
+                    <input type="range" id="rate" min="1" max="100" value="10" class="slider1 rate" />
+                </div>
+            </div>
+            <br><img src="../_imagens/equalizator-buttons.png" style="width: 30px; height: 30px;">
+            <div class="video-tom float-left video-btn">
+                <div class="slideContainer">
+                    <input type="range" id="pitch" min="0" max="2" value="1" class="slider1 pitch" />
+                </div>
+            </div>
+</div>
+
+    <footer id="rodape">
+
+        <p> Copyright &copy; 2018 - by Robson Cavalcante <br/>
+            <a  href="http://facebook.com/robson.cavalcante.1675" target="_blank">Facebook</a> | <a href="https://www.instagram.com/robson.css" target="_blank">Instagram</a>
+        </p>
+    </footer>
+</div>
+</body>
+<style type="text/css">
+
+input[type="range"] { 
+    margin: auto;
+    -webkit-appearance: none;
+    position: relative;
+    overflow: hidden;
+    height: 20px;
+    width: 200px;
+    cursor: pointer;
+    border-radius: 0; /* iOS */
+}
+
+::-webkit-slider-runnable-track {
+    background: #ddd;
+}
+
+/*
+ * 1. Set to 0 width and remove border for a slider without a thumb
+ */
+::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 20px; /* 1 */
+    height: 40px;
+    background: #fff;
+    box-shadow: -100vw 0 0 100vw dodgerblue;
+    border: 2px solid #999; /* 1 */
+}
+
+::-moz-range-track {
+    height: 40px;
+    background: #ddd;
+}
+
+::-moz-range-thumb {
+    background: #fff;
+    height: 40px;
+    width: 20px;
+    border: 3px solid #999;
+    border-radius: 0 !important;
+    box-shadow: -100vw 0 0 100vw dodgerblue;
+    box-sizing: border-box;
+}
+
+::-ms-fill-lower { 
+    background: dodgerblue;
+}
+
+::-ms-thumb { 
+    background: #fff;
+    border: 2px solid #999;
+    height: 40px;
+    width: 20px;
+    box-sizing: border-box;
+}
+
+::-ms-ticks-after { 
+    display: none; 
+}
+
+::-ms-ticks-before { 
+    display: none; 
+}
+
+::-ms-track { 
+    background: #ddd;
+    color: transparent;
+    height: 40px;
+    border: none;
+}
+
+::-ms-tooltip { 
+    display: none;
+}
+</style>
+</html>
